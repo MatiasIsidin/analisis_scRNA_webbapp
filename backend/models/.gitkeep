@@ -1,0 +1,6 @@
+# Coloca aquí tus artefactos:
+# - xgboost_best_model.pkl
+# - label_encoder.pkl
+#
+# Si no los tienes, genera demos con:
+#   python scripts/generate_demo_model.py
