@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Database, Activity, FileText, Settings, ExternalLink, Menu } from 'lucide-react';
+import { Database, Activity, FileText, ExternalLink, Menu } from 'lucide-react';
 import type { ModelInfo, HealthStatus } from '../types';
 
 interface DashboardLayoutProps {

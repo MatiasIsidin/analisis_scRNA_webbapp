@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { Play, RefreshCw, UploadCloud, ChevronRight, FileText } from 'lucide-react'
+import { Play, RefreshCw, ChevronRight, FileText } from 'lucide-react'
 
 import { api } from '../services/api'
 import type { PredictionResponse, ModelInfo, HealthStatus } from '../types'
@@ -16,23 +16,18 @@ import ExportButtons from '../components/ExportButtons'
 export default function HomePage() {
   const [modelInfo, setModelInfo] = useState<ModelInfo | null>(null)
   const [health, setHealth]       = useState<HealthStatus | null>(null)
-  const [infoLoading, setInfoLoading] = useState(true)
-
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
   const [predicting, setPredicting]     = useState(false)
   const [result, setResult]             = useState<PredictionResponse | null>(null)
   const [error, setError]               = useState<string | null>(null)
 
   const fetchModelInfo = useCallback(async () => {
-    setInfoLoading(true)
     try {
       const [h, m] = await Promise.all([api.getHealth(), api.getModelInfo()])
       setHealth(h)
       setModelInfo(m)
     } catch (e) {
       console.warn('No se pudo obtener info del modelo:', api.extractErrorMessage(e))
-    } finally {
-      setInfoLoading(false)
     }
   }, [])
 
